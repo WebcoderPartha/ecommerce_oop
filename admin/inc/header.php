@@ -3,6 +3,13 @@
   header("Pragma: no-cache"); 
   header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); 
   header("Cache-Control: max-age=2592000");
+  include_once "../lib/Session.php";
+  Session::checkSession();
+?>
+<?php
+    if (isset($_GET['action']) && $_GET['action'] == 'logout'){
+        Session::destroy();
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,8 +59,8 @@
                         <img src="img/img-profile.jpg" alt="Profile Pic" /></div>
                     <div class="floatleft marginleft10">
                         <ul class="inline-ul floatleft">
-                            <li>Hello Admin</li>
-                            <li><a href="#">Logout</a></li>
+                            <li>Hello <?php echo Session::get('name'); ?></li>
+                            <li><a href="?action=logout">Logout</a></li>
                         </ul>
                     </div>
                 </div>

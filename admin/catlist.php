@@ -1,9 +1,21 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
+<?php include '../classes/Category.php';
+    $category = new Category();
+    if (isset($_GET['action'])){
+        $catID = $_GET['action'];
+        $delete_category = $category->destroy($catID);
+    }
+?>
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Category List</h2>
-                <div class="block">        
+                <div class="block">
+                    <?php
+                        if ($category->success){
+                            echo $category->success;
+                        }
+                    ?>
                     <table class="data display datatable" id="example">
 					<thead>
 						<tr>
@@ -13,46 +25,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="odd gradeX">
-							<td>01</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>02</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="odd gradeX">
-							<td>03</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>04</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-							<tr class="odd gradeX">
-							<td>05</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>06</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="odd gradeX">
-							<td>07</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>08</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
+                        <?php
+                            if ($category->allcategory()){
+                                foreach ($category->allcategory() as $key => $result){ ?>
+                                    <tr class="odd gradeX">
+                                        <td><?php echo $key+1; ?></td>
+                                        <td><?php echo $result['category_name']; ?></td>
+                                        <td><a href="editcat.php?id=<?php echo $result['id']; ?>">Edit</a> || <a href="?action=<?php echo $result['id']; ?>" onclick="return confirm('Are you sure to delete?') ">Delete</a></td>
+                                    </tr>
+                        <?php   } }  ?>
 					</tbody>
 				</table>
                </div>
