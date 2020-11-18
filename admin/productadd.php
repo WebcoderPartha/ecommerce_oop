@@ -1,11 +1,23 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
+<?php include '../classes/Product.php';?>
 <?php include '../classes/Category.php';?>
 <?php include '../classes/Brand.php';?>
+<?php
+    $pd = new Product();
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
+        $storeProduct = $pd->store($_POST, $_FILES);
+    }
+?>
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Add New Product</h2>
-        <div class="block">               
+        <div class="block">
+        <?php
+            if (isset($pd->success)){
+                echo $pd->success;
+            }
+        ?>
          <form action="" method="POST" enctype="multipart/form-data">
             <table class="form">
                
@@ -16,6 +28,11 @@
                     <td>
                         <input type="text" name="product_name" placeholder="Enter Product Name..." class="medium" />
                     </td>
+                    <?php
+                    if (isset($pd->error_prdc)){
+                        echo $pd->error_prdc;
+                        }
+                    ?>
                 </tr>
 				<tr>
                     <td>
@@ -33,6 +50,11 @@
                             <option value="<?php echo $result['id']; ?>"><?php echo $result['category_name']; ?></option>
                             <?php    } } ?>
                         </select>
+                        <?php
+                        if (isset($pd->error_cat)){
+                            echo $pd->error_cat;
+                        }
+                        ?>
                     </td>
                 </tr>
 				<tr>
@@ -54,6 +76,11 @@
                            ?>
 
                         </select>
+                        <?php
+                        if (isset($pd->error_bnd)){
+                            echo $pd->error_bnd;
+                        }
+                        ?>
                     </td>
                 </tr>
 				
@@ -64,6 +91,11 @@
                     <td>
                         <textarea class="tinymce" name="details"></textarea>
                     </td>
+                     <?php
+                     if (isset($pd->error_dtls)){
+                         echo $pd->error_dtls;
+                     }
+                     ?>
                 </tr>
 				<tr>
                     <td>
@@ -72,6 +104,11 @@
                     <td>
                         <input type="text" name="price" placeholder="Enter Price..." class="medium" />
                     </td>
+                    <?php
+                    if (isset($pd->error_pric)){
+                        echo $pd->error_pric;
+                    }
+                    ?>
                 </tr>
             
                 <tr>
@@ -81,6 +118,11 @@
                     <td>
                         <input type="file" name="image" />
                     </td>
+                    <?php
+                    if (isset($pd->error_img)){
+                        echo $pd->error_img;
+                    }
+                    ?>
                 </tr>
 				
 				<tr>
@@ -90,10 +132,15 @@
                     <td>
                         <select id="select" name="type">
                             <option>Select Type</option>
+                            <option value="0">General</option>
                             <option value="1">Featured</option>
-                            <option value="2">Non-Featured</option>
                         </select>
                     </td>
+                    <?php
+                    if (isset($pd->error)){
+                        echo $pd->error;
+                    }
+                    ?>
                 </tr>
 
 				<tr>
