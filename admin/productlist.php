@@ -5,10 +5,22 @@
 <?php
     $product= new Product();
     $fm       = new Format();
-//    print_r($products->getallProudct()->fetch_assoc());
+
+    if (isset($_GET['del'])){
+        $product_id = $_GET['del'];
+        $deleteProduct = $product->destroy($product_id);
+        if (isset($deleteProduct)){
+            echo "<script>window.location = 'productlist.php';</script>";
+        }
+    }
 ?>
 <div class="grid_10">
     <div class="box round first grid">
+        <?php
+            if (isset($product->success)){
+                echo $product->success;
+            }
+        ?>
         <h2>Post List</h2>
         <div class="block">  
             <table class="data display datatable" id="example">
@@ -50,7 +62,7 @@
                             }
                         ?>
                     </td>
-					<td><a href="">Edit</a> || <a href="">Delete</a></td>
+					<td><a href="productedit.php?id=<?php echo $product['id']; ?>">Edit</a> || <a href="?del=<?php echo $product['id']; ?>">Delete</a></td>
 				</tr>
             <?php  } } ?>
 			</tbody>

@@ -5,14 +5,25 @@
 <?php include '../classes/Brand.php';?>
 <?php
     $pd = new Product();
+
+    if (!isset($_GET['id']) || $_GET['id'] == NULL){
+        echo "<script>window.location = 'productlist.php';</script>";
+    }else{
+        $product_id = $pd->real_strings($_GET['id']);
+//        print_r($product);
+    }
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
-        $storeProduct = $pd->store($_POST, $_FILES);
+        $ProductUpdate = $pd->update($_POST, $_FILES, $product_id);
     }
 ?>
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Add New Product</h2>
         <div class="block">
+        <?php
+            $result = $pd->editProduct($product_id);
+            $product = $result->fetch_assoc();
+        ?>
         <?php
             if (isset($pd->success)){
                 echo $pd->success;
@@ -26,7 +37,7 @@
                         <label>Name</label>
                     </td>
                     <td>
-                        <input type="text" name="product_name" placeholder="Enter Product Name..." class="medium" />
+                        <input type="text" name="product_name" value="<?php echo $product['product_name']; ?>" placeholder="Enter Product Name..." class="medium" />
                     </td>
                     <?php
                     if (isset($pd->error_prdc)){
@@ -47,7 +58,15 @@
                                 if ($category){
                                     while ($result = $category->fetch_assoc()){
                             ?>
-                            <option value="<?php echo $result['id']; ?>"><?php echo $result['category_name']; ?></option>
+                            <option value="<?php echo $result['id']; ?>"
+                                    <?php
+                                        if ($product['cat_id'] == $result['id']){
+                                            echo 'selected';
+                                        }
+                                    ?>
+                            >
+                                <?php echo $result['category_name']; ?>
+                            </option>
                             <?php    } } ?>
                         </select>
                         <?php
@@ -70,7 +89,13 @@
                                 if ($allbrand){
                                     while ($result = $allbrand->fetch_assoc()){
                            ?>
-                           <option value="<?php echo $result['id']; ?>"><?php echo $result['brand_name']; ?></option>
+                           <option value="<?php echo $result['id']; ?>"
+                               <?php
+                               if ($product['brand_id'] == $result['id']){
+                                   echo 'selected';
+                               }
+                               ?>
+                           ><?php echo $result['brand_name']; ?></option>
                            <?php  }
                                 }
                            ?>
@@ -89,7 +114,7 @@
                         <label>Description</label>
                     </td>
                     <td>
-                        <textarea class="tinymce" name="details"></textarea>
+                        <textarea class="tinymce" name="details"><?php echo $product['details'] ?></textarea>
                     </td>
                      <?php
                      if (isset($pd->error_dtls)){
@@ -102,7 +127,7 @@
                         <label>Price</label>
                     </td>
                     <td>
-                        <input type="text" name="price" placeholder="Enter Price..." class="medium" />
+                        <input type="text" name="price" placeholder="Enter Price..." value="<?php echo $product['price'] ?>" class="medium" />
                     </td>
                     <?php
                     if (isset($pd->error_pric)){
@@ -111,6 +136,12 @@
                     ?>
                 </tr>
             
+                <tr>
+                    <td></td>
+                    <td>
+                        <img src="<?php echo $product['image']; ?>"  width="100" alt="">
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <label>Upload Image</label>
@@ -132,8 +163,8 @@
                     <td>
                         <select id="select" name="types">
                             <option>Select Type</option>
-                            <option value="0">General</option>
-                            <option value="1">Featured</option>
+                            <option value="0" <?php if ($product['type'] == 0){ echo "selected"; } ?>>General</option>
+                            <option value="1" <?php if ($product['type'] == 1){ echo "selected"; } ?>>Featured</option>
                         </select>
                     </td>
                     <?php
