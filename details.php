@@ -6,7 +6,13 @@
         $product_Id = $_GET['id'];
         $pt_detail = $product->singleProductDetail($product_Id);
     }
+
+    // Store Add to Cart
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['submit']){
+        $addCart = $cart->addToCart($_POST['quantity'], $product_Id);
+    }
 ?>
+
  <div class="main">
     <div class="content">
         <?php
@@ -27,8 +33,8 @@
 						<p>Brand:<span><?php echo $detail['brand_name']; ?></span></p>
 					</div>
 				<div class="add-cart">
-					<form action="cart.html" method="post">
-						<input type="number" class="buyfield" name="" value="1"/>
+					<form action="details.php?id=<?php echo $detail['id']; ?>" method="POST">
+						<input type="number" class="buyfield" name="quantity" value="1" min="1"/>
 						<input type="submit" class="buysubmit" name="submit" value="Buy Now"/>
 					</form>				
 				</div>

@@ -24,18 +24,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9c2f333d-28ab-4075-8776-3b93cd2fc112" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/productadd.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/productadd.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/productlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/productlist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/uploads/1604759336.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/uploads/1605709351.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Adminlogin.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Adminlogin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Brand.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Brand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Cart.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/details.php" beforeDir="false" afterPath="$PROJECT_DIR$/details.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inc/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/inc/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Database.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +80,12 @@
       <workItem from="1604793885516" duration="33000" />
       <workItem from="1605709056353" duration="6474000" />
       <workItem from="1605965498262" duration="12438000" />
+      <workItem from="1606055333337" duration="6699000" />
+      <workItem from="1606290119805" duration="6000" />
+      <workItem from="1606766233104" duration="12000" />
+      <workItem from="1606943810224" duration="7640000" />
+      <workItem from="1607030708130" duration="605000" />
+      <workItem from="1607109117457" duration="2396000" />
     </task>
     <servers />
   </component>
@@ -127,13 +125,13 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="372" y="23" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1605998607845" />
-    <state x="490" y="165" key="run.anything.popup" timestamp="1605999224177">
+    <state x="490" y="165" key="run.anything.popup" timestamp="1606989874478">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="490" y="165" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1605999224177" />
-    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605998265137">
+    <state x="490" y="165" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1606989874478" />
+    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1607007320122">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1605998265137" />
+    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1607007320122" />
   </component>
 </project>
