@@ -24,7 +24,6 @@ class Product
     public $error_img;
 
     public function real_strings($value){
-
         $value = mysqli_real_escape_string($this->db->link, $value);
         return $value;
 
@@ -224,7 +223,7 @@ class Product
     // Frontend Featured Product
     public function featuredProduct(){
 
-        $query = "SELECT * FROM tbl_product WHERE type = 1 LIMIT 4";
+        $query  = "SELECT * FROM tbl_product WHERE type = 1 LIMIT 4";
         $result = $this->db->select($query);
         return $result;
 
@@ -232,7 +231,48 @@ class Product
 
     public function singleProductDetail($id){
         $productID = $this->real_strings($id);
-        $query = "SELECT p.*, c.category_name, b.brand_name FROM tbl_product as p, tbl_category as c, tbl_brand as b WHERE p.cat_id = c.id AND p.brand_id = b.id AND p.id = '$id'";
+        $query     = "SELECT p.*, c.category_name, b.brand_name FROM tbl_product as p, tbl_category as c, tbl_brand as b WHERE p.cat_id = c.id AND p.brand_id = b.id AND p.id = '$id'";
+        $result    = $this->db->select($query);
+        return $result;
+    }
+
+
+    public function getNewProduct(){
+        $query  = "SELECT * FROM tbl_product ORDER BY id DESC LIMIT 4";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function getIphone(){
+        $query  = "SELECT * FROM tbl_product WHERE brand_id = 2 ORDER BY brand_id DESC LIMIT 1";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function getSumsung(){
+        $query  = "SELECT * FROM tbl_product WHERE brand_id = 1 ORDER BY brand_id DESC LIMIT 1";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function getAcer(){
+        $query  = "SELECT * FROM tbl_product WHERE brand_id = 5 ORDER BY brand_id DESC LIMIT 1";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function getCanon(){
+        $query  = "SELECT * FROM tbl_product WHERE brand_id = 4 ORDER BY brand_id DESC LIMIT 1";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+
+    public function getCatIdByProduct($id){
+        $catid = $this->fm->validation($id);
+        $catid = $this->real_strings($catid);
+
+        $query = "SELECT * FROM tbl_product WHERE cat_id = '$catid' ORDER BY id DESC";
         $result = $this->db->select($query);
         return $result;
     }

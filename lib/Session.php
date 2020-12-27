@@ -50,8 +50,14 @@ class Session
         }
     }
 
+    public static function forget($key){
+        unset($_SESSION[$key]);
+    }
+
     public static function destroy(){
         session_destroy();
         header("Location:login.php");
     }
+
+
 }

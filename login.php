@@ -1,74 +1,97 @@
-<?php include 'inc/header.php'; ?>
-
+<?php include 'inc/header.php';
+$customerHasLogin = Session::get('customerLogin');
+if ($customerHasLogin){
+    header('Location:order.php');
+}
+?>
  <div class="main">
     <div class="content">
     	 <div class="login_panel">
         	<h3>Existing Customers</h3>
-        	<p>Sign in with the form below.</p>
-        	<form action="hello" method="get" id="member">
-                	<input name="Domain" type="text" value="Username" class="field" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}">
-                    <input name="Domain" type="password" value="Password" class="field" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
-                 </form>
-                 <p class="note">If you forgot your passoword just enter your email and click <a href="#">here</a></p>
-                    <div class="buttons"><div><button class="grey">Sign In</button></div></div>
+             <?php
+                if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signin'])){
+                    $customerSignin = $customer->customerSignIn($_POST['email'], $_POST['password']);
+                }
+                if (isset($customerSignin)){
+                    echo $customerSignin;
+                }
+             ?>
+            <form action="" method="POST" id="member">
+                <input name="email" type="text" class="field" placeholder="Enter your email" />
+                <input name="password" type="password" class="field" placeholder="Enter your password" />
+
+                <p class="note">If you forgot your passoword just enter your email and click <a href="#">here</a></p>
+                <div class="buttons">
+                    <div><button name="signin" class="grey">Sign In</button>
                     </div>
-    	<div class="register_account">
+                </div>
+            </form>
+         </div>
+        <div class="register_account">
     		<h3>Register New Account</h3>
-    		<form>
+            <?php
+                if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])){
+                    $custReg = $customer->customerRegister($_POST);
+                }
+                if (isset($custReg)){
+                    echo $custReg;
+                }
+            ?>
+    		<form action="" method="POST">
 		   			 <table>
 		   				<tbody>
 						<tr>
 						<td>
 							<div>
-							<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" >
+							<input type="text" name="name" placeholder="Your name" />
 							</div>
 							
 							<div>
-							   <input type="text" value="City" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'City';}">
+							   <input type="text" name="city" placeholder="Your city" />
 							</div>
 							
 							<div>
-								<input type="text" value="Zip-Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Zip-Code';}">
+								<input type="text" name="zip" placeholder="Your zip code" />
 							</div>
 							<div>
-								<input type="text" value="E-Mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-Mail';}">
+								<input type="text" name="email" placeholder="Your email address" />
 							</div>
 		    			 </td>
 		    			<td>
 						<div>
-							<input type="text" value="Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Address';}">
+							<input type="text" name="address" placeholder="Your address" />
 						</div>
 		    		<div>
-						<select id="country" name="country" onchange="change_country(this.value)" class="frm-field required">
+						<select id="country" name="country" class="frm-field required">
 							<option value="null">Select a Country</option>         
-							<option value="AF">Afghanistan</option>
-							<option value="AL">Albania</option>
-							<option value="DZ">Algeria</option>
-							<option value="AR">Argentina</option>
-							<option value="AM">Armenia</option>
-							<option value="AW">Aruba</option>
-							<option value="AU">Australia</option>
-							<option value="AT">Austria</option>
-							<option value="AZ">Azerbaijan</option>
-							<option value="BS">Bahamas</option>
-							<option value="BH">Bahrain</option>
-							<option value="BD">Bangladesh</option>
+							<option value="Afghanistan">Afghanistan</option>
+							<option value="Albania">Albania</option>
+							<option value="Algeria">Algeria</option>
+							<option value="Argentina">Argentina</option>
+							<option value="Armenia">Armenia</option>
+							<option value="Aruba">Aruba</option>
+							<option value="Australia">Australia</option>
+							<option value="Austria">Austria</option>
+							<option value="Azerbaijan">Azerbaijan</option>
+							<option value="Bahamas">Bahamas</option>
+							<option value="Bahrain">Bahrain</option>
+							<option value="Bangladesh">Bangladesh</option>
 
 		         </select>
 				 </div>		        
 	
 		           <div>
-		          <input type="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}">
+		          <input type="text" name="phone" placeholder="Your phone number" />
 		          </div>
 				  
 				  <div>
-					<input type="text" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+					<input type="text" name="password" placeholder="Your password" />
 				</div>
 		    	</td>
 		    </tr> 
 		    </tbody></table> 
-		   <div class="search"><div><button class="grey">Create Account</button></div></div>
-		    <p class="terms">By clicking 'Create Account' you agree to the <a href="#">Terms &amp; Conditions</a>.</p>
+		   <div class="search"><div><button name="register" class="grey">Register Account</button></div></div>
+
 		    <div class="clear"></div>
 		    </form>
     	</div>  	

@@ -11,6 +11,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['submit']){
         $addCart = $cart->addToCart($_POST['quantity'], $product_Id);
     }
+
 ?>
 
  <div class="main">
@@ -39,33 +40,28 @@
 					</form>				
 				</div>
 			</div>
-            <?php  } } ?>
+
 			<div class="product-desc">
 			<h2>Product Details</h2>
-			<p><?php echo $detail['product_name']; ?></p>
+			<p><?php echo $detail['details']; ?></p>
 	    </div>
-				
+                    <?php  } } ?>
 	</div>
 				<div class="rightsidebar span_3_of_1">
 					<h2>CATEGORIES</h2>
 					<ul>
-				      <li><a href="productbycat.html">Mobile Phones</a></li>
-				      <li><a href="productbycat.html">Desktop</a></li>
-				      <li><a href="productbycat.html">Laptop</a></li>
-				      <li><a href="productbycat.html">Accessories</a></li>
-				      <li><a href="productbycat.html#">Software</a></li>
-					   <li><a href="productbycat.html">Sports & Fitness</a></li>
-					   <li><a href="productbycat.html">Footwear</a></li>
-					   <li><a href="productbycat.html">Jewellery</a></li>
-					   <li><a href="productbycat.html">Clothing</a></li>
-					   <li><a href="productbycat.html">Home Decor & Kitchen</a></li>
-					   <li><a href="productbycat.html">Beauty & Healthcare</a></li>
-					   <li><a href="productbycat.html">Toys, Kids & Babies</a></li>
+                        <?php
+                            $categories = $category->allcategory();
+                            if ($categories){
+                                while ($category = $categories->fetch_assoc()){
+                        ?>
+				      <li><a href="productbycat.php?catid=<?php echo $category['id']; ?>"><?php echo $category['category_name']; ?></a></li>
+                      <?php } } ?>
     				</ul>
     	
  				</div>
  		</div>
  	</div>
  </div>
-</div>
+
 <?php include 'inc/footer.php'; ?>

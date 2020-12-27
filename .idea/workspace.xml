@@ -26,8 +26,16 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/cart.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/contact.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/details.php" beforeDir="false" afterPath="$PROJECT_DIR$/details.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inc/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/inc/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inc/slider.php" beforeDir="false" afterPath="$PROJECT_DIR$/inc/slider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Session.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productbycat.php" beforeDir="false" afterPath="$PROJECT_DIR$/productbycat.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +60,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -63,6 +71,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampnew\htdocs\shop" />
       <recent name="C:\xampnew\htdocs\shop\admin" />
     </key>
   </component>
@@ -85,7 +94,13 @@
       <workItem from="1606766233104" duration="12000" />
       <workItem from="1606943810224" duration="7640000" />
       <workItem from="1607030708130" duration="605000" />
-      <workItem from="1607109117457" duration="2396000" />
+      <workItem from="1607109117457" duration="7435000" />
+      <workItem from="1607427915394" duration="2344000" />
+      <workItem from="1607795608256" duration="6874000" />
+      <workItem from="1608405504332" duration="12189000" />
+      <workItem from="1608674830877" duration="3233000" />
+      <workItem from="1608683509156" duration="6000" />
+      <workItem from="1609101440566" duration="5179000" />
     </task>
     <servers />
   </component>
@@ -109,14 +124,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604793916624" />
-    <state x="981" y="135" key="NewPhpClassDialog" timestamp="1605989513765">
+    <state x="981" y="135" key="NewPhpClassDialog" timestamp="1608449317490">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="981" y="135" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1605989513765" />
-    <state x="1175" y="576" key="NewPhpFileDialog" timestamp="1605999510194">
+    <state x="981" y="135" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1608449317490" />
+    <state x="1175" y="576" key="NewPhpFileDialog" timestamp="1609101930111">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="1175" y="576" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1605999510194" />
+    <state x="1175" y="576" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1609101930111" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1604667292125">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -125,13 +140,13 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="372" y="23" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1605998607845" />
-    <state x="490" y="165" key="run.anything.popup" timestamp="1606989874478">
+    <state x="490" y="165" key="run.anything.popup" timestamp="1608676941629">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="490" y="165" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1606989874478" />
-    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1607007320122">
+    <state x="490" y="165" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1608676941629" />
+    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1609106424851">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1607007320122" />
+    <state x="814" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1609106424851" />
   </component>
 </project>

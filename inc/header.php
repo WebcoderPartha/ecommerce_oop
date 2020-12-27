@@ -5,19 +5,22 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 header("Cache-Control: max-age=2592000");
 include_once "lib/Session.php";
 Session::init();
-
 include "helpers/Format.php";
-
     function __autoload($class) {
         include 'classes/' . $class . '.php';
     }
 
-    $fm      = new Format();
-    $cart    = new Cart();
-    $user    = new User();
-    $product = new Product();
+    $fm         = new Format();
+    $cart       = new Cart();
+    $user       = new User();
+    $product    = new Product();
+    $category   = new Category();
+    $customer   = new Customer();
 
-
+    if (isset($_GET['logout'])){
+        $delete = $cart->deleteCartSession();
+        $logout = $customer->logout();
+    }
 ?>
 <!DOCTYPE HTML>
 <head>
@@ -59,11 +62,31 @@ include "helpers/Format.php";
                 <div class="cart">
                     <a href="cart.php" title="View my shopping cart" rel="nofollow">
                         <span class="cart_title">Cart</span>
-                        <span class="no_product">(empty)</span>
+                        <span class="no_product">
+                            <?php
+                                $session_id = session_id();
+                                $checkTotalCart = $cart->checkTotalCart($session_id);
+                                if ($checkTotalCart){
+                                    echo "Tk. ".Session::get('total')." | Qty ".Session::get('qty');
+                                }else{
+                                    echo Session::forget('total'); ?>
+                                    (empty)
+
+                                    <?php
+                                }
+                            ?>
+                        </span>
                     </a>
                 </div>
             </div>
-            <div class="login"><a href="login.php">Login</a></div>
+            <?php
+                $loginCheck = Session::get('customerLogin');
+                if ($loginCheck == true){ ?>
+                    <div class="login"><a href="?logout">Logout</a></div>
+           <?php   } else{ ?>
+                    <div class="login"><a href="login.php">Login</a></div>
+           <?php     }
+            ?>
             <div class="clear"></div>
         </div>
         <div class="clear"></div>
@@ -73,7 +96,9 @@ include "helpers/Format.php";
             <li><a href="index.php">Home</a></li>
             <li><a href="products.php">Products</a> </li>
             <li><a href="topbrands.php">Top Brands</a></li>
+            <?php if ($cart->getCartItems()){ ?>
             <li><a href="cart.php">Cart</a></li>
+            <?php } ?>
             <li><a href="contact.php">Contact</a> </li>
             <div class="clear"></div>
         </ul>

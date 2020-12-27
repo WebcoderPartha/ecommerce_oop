@@ -112,6 +112,13 @@ class Cart
 
     }
 
+    public function checkTotalCart($session_id){
+
+        $query = "SELECT * FROM tbl_cart WHERE sessionID = '$session_id'";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
     public function removeCart($cartId, $sessionId){
         $cartid  = $this->fm->validation($cartId);
         $cartid  = $this->real_string($cartid);
@@ -126,6 +133,11 @@ class Cart
 
     }
 
-
+    public function deleteCartSession(){
+        $sessionId  = session_id();
+        $query      = "DELETE FROM tbl_cart WHERE sessionID = '$sessionId'";
+        $delete     = $this->db->delete($query);
+        return $delete;
+    }
 
 }

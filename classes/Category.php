@@ -71,7 +71,6 @@ class Category
 
     }
 
-
     public function destroy($id){
 
         $query = "DELETE FROM tbl_category WHERE id = '$id'";
@@ -86,5 +85,16 @@ class Category
         }
 
     }
+
+
+    public function getCategoryById($id){
+        $catid = $this->fm->validation($id);
+        $catid = mysqli_real_escape_string($this->db->link, $catid);
+        $query = "SELECT * FROM tbl_category WHERE id = '$catid'";
+        $result = $this->db->select($query);
+        return $result;
+
+    }
+
 
 }

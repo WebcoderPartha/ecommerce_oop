@@ -17,6 +17,11 @@
         }
     }
 ?>
+<?php
+    if (!isset($_GET['id'])){
+        echo '<meta http-equiv="refresh" content="0; URL=?id=live" />';
+    }
+?>
  <div class="main">
     <div class="content">
     	<div class="cartoption">		
@@ -40,6 +45,7 @@
                             <?php
                                     $i = 0;
                                     $sum = 0;
+                                    $qty = 0;
                                     while ($result = $getcartItem->fetch_assoc()){
                                         $i++;
                             ?>
@@ -50,7 +56,7 @@
 								<td>Tk. <?php echo $result['price']; ?></td>
 								<td>
 									<form action="" method="POST">
-										<input type="number" name="quantity" value="<?php echo $result['quantity'];  ?>"/>
+										<input type="number" name="quantity" min="1" value="<?php echo $result['quantity'];  ?>"/>
                                         <input type="hidden" name="id" value="<?php echo $result['id']; ?>">
 										<input type="submit" name="submit" value="Update"/>
 									</form>
@@ -61,7 +67,11 @@
                                     ?></td>
 								<td><a href="?remove=<?php echo $result['id']; ?>">X</a></td>
 							</tr>
-                            <?php $sum = $sum + $total; ?>
+                            <?php
+                                 $sum = $sum + $total;
+                                 $qty = $qty + $result['quantity'];
+                            ?>
+
                         <?php } ?>
 						</table>
 						<table style="float:right;text-align:left;" width="40%">
@@ -80,18 +90,22 @@
                                         $grand_total = $sum+$vat;
                                         echo $grand_total;
                                     ?></td>
+                                <?php
+                                    $header_total = Session::set('total', $grand_total);
+                                    $header_qty   = Session::set('qty', $qty)
+                                ?>
 							</tr>
 					   </table
-                <?php }else{ ?>
-                    <h2 style="text-align: center">Empty</h2>
-                <?php } ?>
+                <?php }else{
+                        header('Location:index.php');
+                    } ?>
 					</div>
 					<div class="shopping">
 						<div class="shopleft">
 							<a href="index.php"> <img src="images/shop.png" alt="" /></a>
 						</div>
 						<div class="shopright">
-							<a href="login.html"> <img src="images/check.png" alt="" /></a>
+							<a href="payment.php"> <img src="images/check.png" alt="" /></a>
 						</div>
 					</div>
     	</div>  	
